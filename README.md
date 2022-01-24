@@ -1,12 +1,24 @@
 ## Available Scripts
 
-1.- instalar depencias
+1.- ejecutar scrip de mysql ubicado en la carpeta 
 
+```bash
+scriptdelabd/sqlscript_kmosquera.sql
+```
+
+
+
+2.- instalar depencias
+
+```bash
 npm install
+```
 
-2.- ejecutar app
+3.- ejecutar app
 
+```
 node index.js 
+```
 
 --- informacion por consola ---
 ```bash
@@ -63,3 +75,6 @@ json de errores validando request del body:
 ```
 
 Link de la aplicacion en react [ React App](https://github.com/kevinm9/react-coin).
+
+servidor local laragon version full y solo habilite la base de datos mysql https://laragon.org/
+
