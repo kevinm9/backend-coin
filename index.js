@@ -9,12 +9,14 @@
 */
 
 // Importación de los paquetes necesarios para el proyecto.
+const http = require('http');
 const dotenv = require('dotenv');  
 const mysql = require('mysql2')
 const express = require('express');  
 const bodyparser = require('body-parser'); 
 const cors = require('cors'); 
 const { body, validationResult } = require('express-validator'); 
+
 
 //iniciar
 const app = express();  
@@ -46,9 +48,15 @@ mysqlConnection.connect((err) => {
     }  
 });  
   
+//servidor
+const server = http.createServer((req, res) => {
+    res.redirect('/')
+  });
+  
 // Para ejecutar el servidor con el puerto definido
 app.listen(process.env.NODE_PORT,()=> console.log("Express esta corriendo en el puerto : " + process.env.NODE_PORT));  
   
+
 //Get index  
 app.get('/',(req,res)=>{  
     res.redirect('/crypto')
