@@ -78,5 +78,13 @@ Link de la aplicacion en react [ React App](https://github.com/kevinm9/react-coi
 
 servidor local laragon version full y solo habilite la base de datos mysql https://laragon.org/
 
-actualizacion : se uso railway para despliegue de prueba con variables de entorno 
+actualizacion :13/04/2023
 
+se uso railway para despliegue de prueba con variables de entorno 
+
+NODE_PORT=3000
+DB_HOST=containers-us-west-72.railway.app
+DB_NAME=railway
+DB_USER=root
+DB_PASSWORD=snYleVZZGJIQCDFXF3fj
+DB_PORT=5837
