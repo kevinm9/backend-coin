@@ -2,11 +2,15 @@
    Versión: 0.1
    Autor: Kevin Mosquera 
    Descripcion: tiene los metodos de muestrar las monedas y guardarlas
+   
+    Versión: 0.2
+   Autor: Kevin Mosquera 
+   Descripcion: uso de variables de entorno para conexion remota 
 */
 
 // Importación de los paquetes necesarios para el proyecto.
 const dotenv = require('dotenv');  
-const mysql = require('mysql');  
+const mysql = require('mysql2')
 const express = require('express');  
 const bodyparser = require('body-parser'); 
 const cors = require('cors'); 
@@ -27,9 +31,9 @@ const mysqlConnection = mysql.createConnection({
     host: process.env.DB_HOST,  
     user : process.env.DB_USER,  
     password : process.env.DB_PASSWORD,   
-    database : process.env.DB_PASSWORD,  
+    database : process.env.DB_NAME,  
     port: process.env.DB_PORT,
-    multipleStatements : true  
+    multipleStatements : true 
 });  
   
 // Para verificar si la conexión es exitosa 
@@ -45,7 +49,12 @@ mysqlConnection.connect((err) => {
 // Para ejecutar el servidor con el puerto definido
 app.listen(process.env.NODE_PORT,()=> console.log("Express esta corriendo en el puerto : " + process.env.NODE_PORT));  
   
- 
+//Get index  
+app.get('/',(req,res)=>{  
+    res.redirect('/crypto')
+})  
+
+
 //Get opbtener todas las monedas  
 app.get('/crypto',(req,res)=>{  
     mysqlConnection.query('SELECT * FROM monedas',(err,rows,fields)=>{  

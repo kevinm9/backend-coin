@@ -78,3 +78,5 @@ Link de la aplicacion en react [ React App](https://github.com/kevinm9/react-coi
 
 servidor local laragon version full y solo habilite la base de datos mysql https://laragon.org/
 
+actualizacion : se uso railway para despliegue de prueba con variables de entorno 
+
