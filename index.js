@@ -5,13 +5,16 @@
 */
 
 // Importación de los paquetes necesarios para el proyecto.
-
+const dotenv = require('dotenv');  
 const mysql = require('mysql');  
 const express = require('express');  
-var app = express();  
 const bodyparser = require('body-parser'); 
 const cors = require('cors'); 
 const { body, validationResult } = require('express-validator'); 
+
+//iniciar
+const app = express();  
+dotenv.config();
 
 // Configurar cabeceras y cors
 app.use(cors())
@@ -20,11 +23,12 @@ app.use(cors())
 app.use(bodyparser.json());  
   
 // Cadena de conexión a la base de datos 
-var mysqlConnection = mysql.createConnection({  
-    host: 'localhost',  
-    user : 'root',  
-    password : '',   
-    database : 'moneda_kmosquera',  
+const mysqlConnection = mysql.createConnection({  
+    host: process.env.DB_HOST,  
+    user : process.env.DB_USER,  
+    password : process.env.DB_PASSWORD,   
+    database : process.env.DB_PASSWORD,  
+    port: process.env.DB_PORT,
     multipleStatements : true  
 });  
   
@@ -39,7 +43,7 @@ mysqlConnection.connect((err) => {
 });  
   
 // Para ejecutar el servidor con el puerto definido
-app.listen(3001,()=> console.log("Express esta corriendo en el puerto : 3001"));  
+app.listen(process.env.NODE_PORT,()=> console.log("Express esta corriendo en el puerto : " + process.env.NODE_PORT));  
   
  
 //Get opbtener todas las monedas  
